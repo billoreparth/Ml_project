@@ -13,16 +13,9 @@ def error_message(error,error_detail:sys):
     
 class CustomException(Exception):
     def __init__(self,exc_message,error_detail:sys):
-        # super().__init__(exc_message)
+        super().__init__(exc_message)
         self.exc_message=error_message(exc_message,error_detail=error_detail)
 
     def __str__(self):
         return self.exc_message
 
-
-if __name__=="__main__":
-    try:
-        x=1/0
-    except Exception as e :
-        logging.info('zero division error')
-        raise CustomException(e,sys)

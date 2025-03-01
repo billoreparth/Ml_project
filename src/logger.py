@@ -15,7 +15,3 @@ logging.basicConfig(
 )
 
 
-if __name__=='__main__':
-    logging.info(
-     'this is testing login'
-    )
