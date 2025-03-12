@@ -5,6 +5,9 @@ from src.exception import CustomException
 from src.logger import logging 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
+from src.component.data_transformation import Data_transformation
+from src.component.model_trainer import Modeltrainerconfig
+from src.component.model_trainer import Modeltrainingintialize
 
 @dataclass # this will allow us to difine path variable without using __init__ constuctor 
 class Dataconfig:
@@ -44,4 +47,12 @@ class Dataingestion:
         
 if __name__=='__main__':
     obj=Dataingestion()
-    obj.data_ingestion_initilize()
+    train_data,test_data=obj.data_ingestion_initilize()
+
+    transform_obj=Data_transformation()
+    train,test,_=Data_transformation().data_transformation_intialize(train_path=train_data,test_path=test_data)
+
+    model_t=Modeltrainingintialize()
+    print(model_t.model_training_intilize(train,test))
+
+
